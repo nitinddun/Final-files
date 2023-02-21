@@ -5,12 +5,12 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                git clone git@github.com:nitinddun/cicd.git main
+                git pull git@github.com:nitinddun/cicd.git main
                 sudo docker build -t 767243193153.dkr.ecr.ap-south-1.amazonaws.com/dehradun:latest:$BUILD_NUMBER .
                 # login to ecr 
-                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 767243193153.dkr.ecr.ap-south-1.amazonaws.com
+                #aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 767243193153.dkr.ecr.ap-south-1.amazonaws.com
                 #push the image to ecr 
-                sudo docker push 767243193153.dkr.ecr.ap-south-1.amazonaws.com/dehradun:latest:$BUILD_NUMBER
+                #sudo docker push 767243193153.dkr.ecr.ap-south-1.amazonaws.com/dehradun:latest:$BUILD_NUMBER
                 '''
             }
         }
